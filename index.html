@@ -3,120 +3,830 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Leonard Abraham</title>
-  <meta name="description" content="Director, Photographer, Artist. New portfolio site coming soon." />
+  <title>Leonard Abraham — Photographs / Films / Objects</title>
+  <meta name="description" content="Leonard Abraham — photographs, films, objects, and visual archive." />
   <style>
     :root {
-      --bg: #0f0f0f;
-      --fg: #f2eee7;
-      --muted: #b4ada3;
-      --line: rgba(242, 238, 231, 0.18);
+      --bg: #e8e1d5;
+      --paper: #f3eee6;
+      --ink: #171513;
+      --muted: #6d665d;
+      --soft: #b7aa9a;
+      --line: rgba(23, 21, 19, 0.18);
+      --dark: #12110f;
+      --dark-2: #22201c;
+      --warm: #8a6a45;
+      --rust: #6c3d2e;
+      --stone: #b8afa3;
     }
 
     * { box-sizing: border-box; }
 
-    html, body {
-      margin: 0;
-      min-height: 100%;
-      background: var(--bg);
-      color: var(--fg);
-      font-family: Georgia, "Times New Roman", serif;
+    html {
+      scroll-behavior: smooth;
     }
 
     body {
-      display: flex;
-      align-items: center;
-      justify-content: center;
+      margin: 0;
+      background:
+        radial-gradient(circle at 18% 12%, rgba(255,255,255,0.38), transparent 28%),
+        radial-gradient(circle at 78% 9%, rgba(108,61,46,0.12), transparent 26%),
+        var(--bg);
+      color: var(--ink);
+      font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+      letter-spacing: -0.01em;
+    }
+
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      opacity: 0.18;
+      background-image:
+        linear-gradient(rgba(23,21,19,0.06) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(23,21,19,0.04) 1px, transparent 1px);
+      background-size: 42px 42px;
+      mix-blend-mode: multiply;
+      z-index: 10;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .site-shell {
       min-height: 100vh;
-      padding: 32px;
+      padding: 24px;
     }
 
-    .frame {
-      width: min(760px, 100%);
-      border: 1px solid var(--line);
-      padding: 56px 40px;
-      background: rgba(255,255,255,0.02);
-    }
-
-    .kicker {
-      margin: 0 0 18px;
-      font-size: 12px;
-      letter-spacing: 0.28em;
+    .topbar {
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 20px;
+      padding: 18px 0 16px;
+      margin-bottom: 32px;
+      background: rgba(232, 225, 213, 0.82);
+      backdrop-filter: blur(18px);
+      border-bottom: 1px solid var(--line);
       text-transform: uppercase;
+      letter-spacing: 0.2em;
+      font-size: 11px;
+    }
+
+    .brand {
+      font-weight: 600;
+      letter-spacing: 0.26em;
+    }
+
+    .nav {
+      display: flex;
+      gap: 18px;
       color: var(--muted);
+      flex-wrap: wrap;
+      justify-content: flex-end;
+    }
+
+    .nav a {
+      transition: color 180ms ease;
+    }
+
+    .nav a:hover {
+      color: var(--ink);
+    }
+
+    .hero {
+      display: grid;
+      grid-template-columns: minmax(280px, 0.82fr) minmax(380px, 1.18fr);
+      min-height: calc(100vh - 120px);
+      gap: clamp(32px, 5vw, 80px);
+      align-items: end;
+      padding: 28px 0 64px;
+    }
+
+    .hero-copy {
+      align-self: stretch;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      min-height: 620px;
+    }
+
+    .eyebrow {
+      margin: 0;
+      text-transform: uppercase;
+      letter-spacing: 0.28em;
+      color: var(--muted);
+      font-size: 12px;
     }
 
     h1 {
-      margin: 0;
-      font-size: clamp(40px, 7vw, 72px);
-      line-height: 0.95;
+      margin: 34px 0 0;
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: clamp(52px, 9.8vw, 154px);
+      line-height: 0.82;
+      letter-spacing: -0.08em;
       font-weight: 400;
-      letter-spacing: -0.03em;
+      max-width: 8ch;
     }
 
-    .role {
-      margin: 22px 0 0;
-      font-size: 14px;
-      letter-spacing: 0.18em;
-      text-transform: uppercase;
-      color: var(--muted);
-    }
-
-    .divider {
-      width: 72px;
-      height: 1px;
-      background: var(--line);
-      margin: 34px 0;
-    }
-
-    .copy {
-      margin: 0;
+    .intro {
       max-width: 34rem;
-      font-size: clamp(18px, 2.4vw, 24px);
-      line-height: 1.5;
+      margin: 34px 0 0;
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: clamp(22px, 2.7vw, 36px);
+      line-height: 1.08;
+      letter-spacing: -0.045em;
     }
 
-    .contact {
-      margin-top: 28px;
-      font-size: 16px;
+    .descriptor {
+      width: min(100%, 520px);
+      display: grid;
+      gap: 16px;
+      margin-top: 44px;
+      padding-top: 22px;
+      border-top: 1px solid var(--line);
       color: var(--muted);
+      font-size: 14px;
+      line-height: 1.6;
     }
 
-    .contact a {
-      color: var(--fg);
-      text-decoration: none;
-      border-bottom: 1px solid var(--line);
-      padding-bottom: 2px;
+    .section-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 26px;
     }
 
-    .footer {
-      margin-top: 52px;
-      font-size: 12px;
-      letter-spacing: 0.22em;
+    .pill {
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      padding: 10px 13px;
       text-transform: uppercase;
+      letter-spacing: 0.2em;
+      font-size: 11px;
+      color: var(--ink);
+      background: rgba(243,238,230,0.45);
+      transition: background 180ms ease, transform 180ms ease;
+    }
+
+    .pill:hover {
+      background: rgba(23,21,19,0.07);
+      transform: translateY(-1px);
+    }
+
+    .archive-grid {
+      display: grid;
+      grid-template-columns: 1.05fr 0.75fr 0.92fr;
+      grid-template-rows: 1.2fr 0.75fr 1fr;
+      gap: 14px;
+      min-height: 680px;
+    }
+
+    .tile {
+      position: relative;
+      overflow: hidden;
+      min-height: 160px;
+      background: var(--dark);
+      color: var(--paper);
+      border: 1px solid rgba(23,21,19,0.22);
+      isolation: isolate;
+    }
+
+    .tile::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      z-index: -2;
+      background:
+        linear-gradient(135deg, rgba(255,255,255,0.12), transparent 28%),
+        radial-gradient(circle at 70% 22%, rgba(232,225,213,0.14), transparent 22%),
+        linear-gradient(160deg, var(--dark), var(--dark-2));
+      transform: scale(1.01);
+      transition: transform 600ms ease, filter 600ms ease;
+    }
+
+    .tile::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      z-index: -1;
+      background:
+        linear-gradient(to bottom, transparent 0%, rgba(0,0,0,0.08) 48%, rgba(0,0,0,0.74) 100%),
+        repeating-linear-gradient(90deg, rgba(255,255,255,0.05) 0 1px, transparent 1px 13px);
+      opacity: 0.72;
+    }
+
+    .tile:hover::before {
+      transform: scale(1.05);
+      filter: contrast(1.08);
+    }
+
+    .tile-large {
+      grid-column: 1 / 3;
+      grid-row: 1 / 3;
+    }
+
+    .tile-vertical {
+      grid-column: 3 / 4;
+      grid-row: 1 / 2;
+    }
+
+    .tile-object {
+      grid-column: 3 / 4;
+      grid-row: 2 / 4;
+      background: #d3c6b7;
+      color: var(--ink);
+    }
+
+    .tile-film {
+      grid-column: 1 / 2;
+      grid-row: 3 / 4;
+    }
+
+    .tile-study {
+      grid-column: 2 / 3;
+      grid-row: 3 / 4;
+    }
+
+    .tile-large::before {
+      background:
+        radial-gradient(circle at 24% 36%, rgba(243,238,230,0.22), transparent 16%),
+        linear-gradient(90deg, rgba(12,13,14,0.92), rgba(28,29,28,0.3) 42%, rgba(18,17,15,0.96)),
+        linear-gradient(150deg, #151515, #34312c 58%, #0f0e0c);
+    }
+
+    .tile-vertical::before {
+      background:
+        radial-gradient(circle at 52% 27%, rgba(255,255,255,0.18), transparent 15%),
+        linear-gradient(180deg, #2f2a24, #141311 72%);
+    }
+
+    .tile-object::before {
+      background:
+        linear-gradient(118deg, transparent 0 32%, rgba(23,21,19,0.18) 32% 33%, transparent 33% 100%),
+        radial-gradient(circle at 35% 34%, rgba(255,255,255,0.36), transparent 20%),
+        linear-gradient(160deg, #d6ccbf, #9f9181 58%, #6c3d2e);
+    }
+
+    .tile-film::before {
+      background:
+        linear-gradient(110deg, rgba(138,106,69,0.58), transparent 35%),
+        linear-gradient(180deg, #11100f, #382d26 68%, #120f0c);
+    }
+
+    .tile-study::before {
+      background:
+        radial-gradient(circle at 76% 18%, rgba(232,225,213,0.18), transparent 20%),
+        linear-gradient(130deg, #b8afa3, #2a2926 42%, #12110f);
+    }
+
+    .tile-label {
+      position: absolute;
+      inset: auto 18px 18px;
+      display: grid;
+      gap: 8px;
+    }
+
+    .tile-kicker {
+      font-size: 10px;
+      letter-spacing: 0.24em;
+      text-transform: uppercase;
+      color: rgba(243,238,230,0.68);
+    }
+
+    .tile-object .tile-kicker {
+      color: rgba(23,21,19,0.56);
+    }
+
+    .tile-title {
+      margin: 0;
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: clamp(22px, 2.5vw, 42px);
+      line-height: 0.92;
+      letter-spacing: -0.05em;
+      max-width: 9ch;
+    }
+
+    .tile-note {
+      max-width: 18rem;
+      margin: 0;
+      font-size: 12px;
+      line-height: 1.45;
+      color: rgba(243,238,230,0.66);
+    }
+
+    .tile-object .tile-note {
+      color: rgba(23,21,19,0.64);
+    }
+
+    .marquee {
+      border-top: 1px solid var(--line);
+      border-bottom: 1px solid var(--line);
+      padding: 16px 0;
+      overflow: hidden;
       color: var(--muted);
+      text-transform: uppercase;
+      letter-spacing: 0.24em;
+      font-size: 11px;
+      white-space: nowrap;
+    }
+
+    .marquee span {
+      display: inline-block;
+      padding-right: 40px;
+    }
+
+    section {
+      padding: 96px 0 0;
+    }
+
+    .section-head {
+      display: grid;
+      grid-template-columns: 0.45fr 1fr;
+      gap: clamp(24px, 6vw, 96px);
+      align-items: start;
+      margin-bottom: 34px;
+      border-top: 1px solid var(--line);
+      padding-top: 22px;
+    }
+
+    .section-number {
+      color: var(--muted);
+      font-size: 12px;
+      letter-spacing: 0.26em;
+      text-transform: uppercase;
+    }
+
+    h2 {
+      margin: 0;
+      font-family: Georgia, "Times New Roman", serif;
+      font-weight: 400;
+      font-size: clamp(42px, 7vw, 110px);
+      line-height: 0.88;
+      letter-spacing: -0.075em;
+    }
+
+    .section-copy {
+      margin: 18px 0 0;
+      max-width: 46rem;
+      color: var(--muted);
+      font-size: 16px;
+      line-height: 1.7;
+    }
+
+    .project-row {
+      display: grid;
+      grid-template-columns: 1.15fr 0.85fr;
+      gap: 16px;
+      min-height: 280px;
+      margin-bottom: 16px;
+    }
+
+    .project-card {
+      border: 1px solid var(--line);
+      background: rgba(243,238,230,0.38);
+      padding: 18px;
+      min-height: 260px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .project-card.dark {
+      background: var(--dark);
+      color: var(--paper);
+    }
+
+    .project-card::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      opacity: 0.28;
+      background:
+        radial-gradient(circle at 22% 22%, rgba(255,255,255,0.24), transparent 16%),
+        linear-gradient(140deg, transparent, rgba(23,21,19,0.22));
+      pointer-events: none;
+    }
+
+    .project-meta {
+      display: flex;
+      justify-content: space-between;
+      gap: 18px;
+      position: relative;
+      z-index: 1;
+      text-transform: uppercase;
+      letter-spacing: 0.2em;
+      color: var(--muted);
+      font-size: 11px;
+    }
+
+    .dark .project-meta {
+      color: rgba(243,238,230,0.58);
+    }
+
+    .project-title {
+      position: relative;
+      z-index: 1;
+      margin: 0;
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: clamp(30px, 4vw, 60px);
+      line-height: 0.92;
+      letter-spacing: -0.055em;
+      max-width: 11ch;
+    }
+
+    .project-summary {
+      position: relative;
+      z-index: 1;
+      width: min(100%, 31rem);
+      margin: 18px 0 0;
+      color: var(--muted);
+      line-height: 1.6;
+      font-size: 14px;
+    }
+
+    .dark .project-summary {
+      color: rgba(243,238,230,0.62);
+    }
+
+    .index-list {
+      border-top: 1px solid var(--line);
+    }
+
+    .index-item {
+      display: grid;
+      grid-template-columns: 0.16fr 0.84fr 0.34fr;
+      gap: 18px;
+      padding: 18px 0;
+      border-bottom: 1px solid var(--line);
+      align-items: baseline;
+    }
+
+    .index-item span {
+      color: var(--muted);
+      text-transform: uppercase;
+      letter-spacing: 0.2em;
+      font-size: 11px;
+    }
+
+    .index-item strong {
+      font-family: Georgia, "Times New Roman", serif;
+      font-weight: 400;
+      font-size: clamp(26px, 3vw, 44px);
+      letter-spacing: -0.05em;
+    }
+
+    .about-contact {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+      padding-bottom: 24px;
+    }
+
+    .panel {
+      border: 1px solid var(--line);
+      padding: clamp(24px, 5vw, 56px);
+      background: rgba(243,238,230,0.42);
+      min-height: 330px;
+    }
+
+    .panel h3 {
+      margin: 0 0 22px;
+      font-family: Georgia, "Times New Roman", serif;
+      font-weight: 400;
+      font-size: clamp(32px, 5vw, 70px);
+      line-height: 0.9;
+      letter-spacing: -0.06em;
+    }
+
+    .panel p {
+      margin: 0;
+      max-width: 40rem;
+      color: var(--muted);
+      line-height: 1.7;
+    }
+
+    .contact-link {
+      display: inline-block;
+      margin-top: 26px;
+      padding-bottom: 3px;
+      border-bottom: 1px solid var(--ink);
+      text-transform: uppercase;
+      letter-spacing: 0.2em;
+      font-size: 11px;
+    }
+
+    footer {
+      display: flex;
+      justify-content: space-between;
+      gap: 20px;
+      border-top: 1px solid var(--line);
+      padding: 20px 0 4px;
+      color: var(--muted);
+      text-transform: uppercase;
+      letter-spacing: 0.22em;
+      font-size: 10px;
+    }
+
+    @media (max-width: 980px) {
+      .hero,
+      .section-head,
+      .project-row,
+      .about-contact {
+        grid-template-columns: 1fr;
+      }
+
+      .hero-copy {
+        min-height: auto;
+      }
+
+      .archive-grid {
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: 420px 320px 280px;
+        min-height: auto;
+      }
+
+      .tile-large {
+        grid-column: 1 / 3;
+        grid-row: 1 / 2;
+      }
+
+      .tile-vertical {
+        grid-column: 1 / 2;
+        grid-row: 2 / 3;
+      }
+
+      .tile-object {
+        grid-column: 2 / 3;
+        grid-row: 2 / 4;
+      }
+
+      .tile-film {
+        grid-column: 1 / 2;
+        grid-row: 3 / 4;
+      }
+
+      .tile-study {
+        display: none;
+      }
     }
 
     @media (max-width: 640px) {
-      .frame {
-        padding: 40px 24px;
+      .site-shell {
+        padding: 18px;
+      }
+
+      .topbar {
+        position: static;
+        display: grid;
+      }
+
+      .nav {
+        justify-content: flex-start;
+      }
+
+      .hero {
+        padding-top: 8px;
+      }
+
+      .archive-grid {
+        display: grid;
+        grid-template-columns: 1fr;
+        grid-template-rows: repeat(4, 300px);
+      }
+
+      .tile,
+      .tile-large,
+      .tile-vertical,
+      .tile-object,
+      .tile-film {
+        grid-column: auto;
+        grid-row: auto;
+      }
+
+      .index-item {
+        grid-template-columns: 1fr;
+        gap: 8px;
+      }
+
+      footer {
+        display: grid;
       }
     }
   </style>
 </head>
 <body>
-  <main class="frame">
-    <p class="kicker">Leonard Abraham</p>
-    <h1>New work<br>coming soon</h1>
-    <p class="role">Director · Photographer · Artist</p>
-    <div class="divider"></div>
-    <p class="copy">
-      A portfolio site is currently in development. For collaborations, commissions, and production inquiries, please get in touch below.
-    </p>
-    <p class="contact">
-      <a href="mailto:info@leonardabraham.com">info@leonardabraham.com</a>
-    </p>
-    <p class="footer">Los Angeles</p>
-  </main>
+  <div class="site-shell">
+    <header class="topbar">
+      <a class="brand" href="#top">Leonard Abraham</a>
+      <nav class="nav" aria-label="Main navigation">
+        <a href="#photographs">Photographs</a>
+        <a href="#films">Films</a>
+        <a href="#objects">Objects</a>
+        <a href="#index">Index</a>
+        <a href="#contact">Contact</a>
+      </nav>
+    </header>
+
+    <main id="top">
+      <section class="hero" aria-labelledby="hero-title">
+        <div class="hero-copy">
+          <div>
+            <p class="eyebrow">Visual archive / Los Angeles</p>
+            <h1 id="hero-title">Photographs Films Objects</h1>
+            <p class="intro">Observed characters, staged rooms, industrial fragments, and private mythologies.</p>
+          </div>
+
+          <div>
+            <div class="descriptor">
+              <p>Director, photographer, and artist working between cinematic character studies, editorial stills, short films, and sculptural objects.</p>
+              <p>The work lives somewhere between a production still, a found room, a cast object, and a story that has already happened.</p>
+            </div>
+            <div class="section-links" aria-label="Featured sections">
+              <a class="pill" href="#photographs">Enter Photographs</a>
+              <a class="pill" href="#films">Enter Films</a>
+              <a class="pill" href="#objects">Enter Objects</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="archive-grid" aria-label="Homepage visual archive preview">
+          <a class="tile tile-large" href="#photographs">
+            <div class="tile-label">
+              <span class="tile-kicker">Photographs / Room study</span>
+              <h2 class="tile-title">Lonely Businessman</h2>
+              <p class="tile-note">Motel interiors, strange quiet, anonymous lives.</p>
+            </div>
+          </a>
+
+          <a class="tile tile-vertical" href="#photographs">
+            <div class="tile-label">
+              <span class="tile-kicker">Portrait dossier</span>
+              <h2 class="tile-title">Personage</h2>
+              <p class="tile-note">Characters observed, not performed.</p>
+            </div>
+          </a>
+
+          <a class="tile tile-object" href="#objects">
+            <div class="tile-label">
+              <span class="tile-kicker">Objects / Material studies</span>
+              <h2 class="tile-title">Wall Reliefs</h2>
+              <p class="tile-note">Weathered forms, architectural fragments, off-white surfaces.</p>
+            </div>
+          </a>
+
+          <a class="tile tile-film" href="#films">
+            <div class="tile-label">
+              <span class="tile-kicker">Films / Moving image</span>
+              <h2 class="tile-title">Director Work</h2>
+              <p class="tile-note">Commercials, music video, short-form worlds.</p>
+            </div>
+          </a>
+
+          <a class="tile tile-study" href="#index">
+            <div class="tile-label">
+              <span class="tile-kicker">Archive / Tests</span>
+              <h2 class="tile-title">Studies</h2>
+              <p class="tile-note">Light, rooms, faces, fragments.</p>
+            </div>
+          </a>
+        </div>
+      </section>
+
+      <div class="marquee" aria-hidden="true">
+        <span>Photographs / Films / Objects / Archive / Los Angeles / Staged Characters / Quiet Rooms / Industrial Forms / Private Worlds</span>
+        <span>Photographs / Films / Objects / Archive / Los Angeles / Staged Characters / Quiet Rooms / Industrial Forms / Private Worlds</span>
+      </div>
+
+      <section id="photographs" aria-labelledby="photographs-title">
+        <div class="section-head">
+          <span class="section-number">01 / Photographs</span>
+          <div>
+            <h2 id="photographs-title">Cinematic character editorial.</h2>
+            <p class="section-copy">Portraits, rooms, and staged fragments built like stills from a film. The feeling should be observed, withheld, and slightly strange — never over-explained.</p>
+          </div>
+        </div>
+
+        <div class="project-row">
+          <article class="project-card dark">
+            <div class="project-meta"><span>Series</span><span>2026</span></div>
+            <div>
+              <h3 class="project-title">DOSSIER: PERSONAGE</h3>
+              <p class="project-summary">Black-and-white portraits built as files on imagined characters: Isaak, Elsa, and the older man.</p>
+            </div>
+          </article>
+
+          <article class="project-card">
+            <div class="project-meta"><span>Study</span><span>Motel</span></div>
+            <div>
+              <h3 class="project-title">LONELY BUSINESSMAN</h3>
+              <p class="project-summary">A motel-room world of practical lamps, blue windows, stillness, and private collapse.</p>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <section id="films" aria-labelledby="films-title">
+        <div class="section-head">
+          <span class="section-number">02 / Films</span>
+          <div>
+            <h2 id="films-title">Moving image as atmosphere.</h2>
+            <p class="section-copy">Short films, music videos, and commercial worlds with a photographic backbone: controlled frames, tactile faces, and images that feel found after the event.</p>
+          </div>
+        </div>
+
+        <div class="project-row">
+          <article class="project-card">
+            <div class="project-meta"><span>Commercial / Spec</span><span>In development</span></div>
+            <div>
+              <h3 class="project-title">THE MORNING RITUAL</h3>
+              <p class="project-summary">Pre-dawn movement, desert quiet, blurred ritual, and a body pushing through first light.</p>
+            </div>
+          </article>
+
+          <article class="project-card dark">
+            <div class="project-meta"><span>Music video</span><span>Visual plan</span></div>
+            <div>
+              <h3 class="project-title">POOL / VANITY / HALLWAY</h3>
+              <p class="project-summary">Beauty, glass, water, mirror light, warm skin, and controlled lens language.</p>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <section id="objects" aria-labelledby="objects-title">
+        <div class="section-head">
+          <span class="section-number">03 / Objects</span>
+          <div>
+            <h2 id="objects-title">Weathered architectural fragments.</h2>
+            <p class="section-copy">Wall reliefs and sculptural studies treated as evidence: off-white surfaces, rust, patina, industrial geometry, and desert-observatory forms.</p>
+          </div>
+        </div>
+
+        <div class="project-row">
+          <article class="project-card dark">
+            <div class="project-meta"><span>Wall work</span><span>Material tests</span></div>
+            <div>
+              <h3 class="project-title">RELIEFS</h3>
+              <p class="project-summary">Raised planes, eroded edges, cast shadows, and quiet object presence.</p>
+            </div>
+          </article>
+
+          <article class="project-card">
+            <div class="project-meta"><span>Archive</span><span>Studio</span></div>
+            <div>
+              <h3 class="project-title">OBJECT STUDIES</h3>
+              <p class="project-summary">Small freestanding forms, material experiments, fragments, and process documentation.</p>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <section id="index" aria-labelledby="index-title">
+        <div class="section-head">
+          <span class="section-number">04 / Index</span>
+          <div>
+            <h2 id="index-title">Archive index.</h2>
+            <p class="section-copy">A cleaner list view for people who want to move fast: projects, studies, objects, films, and contact.</p>
+          </div>
+        </div>
+
+        <div class="index-list">
+          <a class="index-item" href="#photographs"><span>Photo</span><strong>DOSSIER: PERSONAGE</strong><span>Portrait series</span></a>
+          <a class="index-item" href="#photographs"><span>Photo</span><strong>LONELY BUSINESSMAN</strong><span>Motel study</span></a>
+          <a class="index-item" href="#films"><span>Film</span><strong>THE MORNING RITUAL</strong><span>Spec film</span></a>
+          <a class="index-item" href="#objects"><span>Object</span><strong>WALL RELIEFS</strong><span>Sculptural works</span></a>
+          <a class="index-item" href="#contact"><span>Info</span><strong>CONTACT / ABOUT</strong><span>Los Angeles</span></a>
+        </div>
+      </section>
+
+      <section id="contact" class="about-contact" aria-label="About and contact">
+        <article class="panel">
+          <h3>About</h3>
+          <p>Leonard Abraham is a Los Angeles-based director, photographer, and artist. His work moves between cinematic portraiture, atmospheric film language, and sculptural objects rooted in material memory, industrial geometry, and private worlds.</p>
+        </article>
+
+        <article class="panel">
+          <h3>Contact</h3>
+          <p>For collaborations, commissions, editorial, directing, photography, sculpture inquiries, or representation conversations.</p>
+          <a class="contact-link" href="mailto:info@leonardabraham.com">info@leonardabraham.com</a>
+        </article>
+      </section>
+    </main>
+
+    <footer>
+      <span>Leonard Abraham</span>
+      <span>Photographs / Films / Objects</span>
+      <span>Los Angeles</span>
+    </footer>
+  </div>
 </body>
 </html>
