@@ -66,7 +66,7 @@
       font-size: 0.78em;
       line-height: 1;
       letter-spacing: 0.12em;
-      padding-bottom: 92px;
+      padding-bottom: 110px;
     }
 
     .nav-row {
@@ -88,16 +88,19 @@
     .subnav {
       position: absolute;
       left: 2.65ch;
-      top: 0.95em;
+      top: 0.7em;
       display: grid;
       gap: 5px;
-      padding-top: 13px;
+      min-width: 34ch;
+      padding: 20px 170px 34px 0;
       white-space: nowrap;
       opacity: 0;
-      pointer-events: none;
+      visibility: hidden;
+      pointer-events: auto;
       font-size: 0.88em;
       line-height: 1;
       letter-spacing: 0.1em;
+      transition: opacity 0s 0.4s, visibility 0s 0.4s;
     }
 
     .subnav a::before {
@@ -115,7 +118,8 @@
     .nav:has(.films-subnav:hover) .films-subnav,
     .nav:has(.films-subnav:focus-within) .films-subnav {
       opacity: 1;
-      pointer-events: auto;
+      visibility: visible;
+      transition-delay: 0s;
     }
 
     .media-stage {
@@ -193,7 +197,7 @@
 
       .nav {
         font-size: 0.76em;
-        padding-bottom: 92px;
+        padding-bottom: 110px;
       }
 
       .nav-row {
@@ -203,6 +207,8 @@
       .subnav {
         left: 2.65ch;
         gap: 5px;
+        min-width: 32ch;
+        padding: 20px 120px 34px 0;
         font-size: 0.86em;
       }
 
