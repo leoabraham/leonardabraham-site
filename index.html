@@ -61,9 +61,18 @@
 
     .nav {
       display: flex;
-      gap: 6px;
+      gap: 5px;
       align-items: center;
       white-space: nowrap;
+      font-size: 0.78em;
+      line-height: 1;
+      letter-spacing: 0.12em;
+    }
+
+    .nav::before {
+      content: ">";
+      display: inline-block;
+      margin-right: 2px;
     }
 
     .nav a,
@@ -145,7 +154,8 @@
       }
 
       .nav {
-        gap: 5px;
+        gap: 4px;
+        font-size: 0.76em;
       }
 
       .media-slide.vertical {
@@ -173,9 +183,9 @@
       <a class="name" href="/">Leonard Abraham</a>
       <nav class="nav">
         <a href="#photographs">Photographs</a>
-        <span>/</span>
+        <span>--</span>
         <a href="#films">Films</a>
-        <span>/</span>
+        <span>--</span>
         <a href="#objects">Objects</a>
       </nav>
     </header>
