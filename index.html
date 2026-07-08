@@ -68,7 +68,7 @@
       font-size: 0.78em;
       line-height: 1;
       letter-spacing: 0.12em;
-      padding-bottom: 18px;
+      padding-bottom: 78px;
     }
 
     .nav::before {
@@ -89,16 +89,21 @@
     .subnav {
       position: absolute;
       left: 0;
-      top: 1.7em;
-      display: flex;
+      top: 1.8em;
+      display: grid;
       gap: 5px;
-      align-items: center;
       white-space: nowrap;
       opacity: 0;
       pointer-events: none;
       font-size: 0.88em;
       line-height: 1;
       letter-spacing: 0.1em;
+    }
+
+    .subnav a::before {
+      content: ">";
+      display: inline-block;
+      margin-right: 6px;
     }
 
     .nav-group:hover .subnav,
@@ -183,11 +188,11 @@
       .nav {
         gap: 4px;
         font-size: 0.76em;
-        padding-bottom: 18px;
+        padding-bottom: 78px;
       }
 
       .subnav {
-        gap: 4px;
+        gap: 5px;
         font-size: 0.86em;
       }
 
@@ -219,7 +224,6 @@
           <a href="#photographs">Photographs</a>
           <span class="subnav" aria-label="Photographs categories">
             <a href="#photographs-personal">Personal</a>
-            <span>--</span>
             <a href="#photographs-fashion">Fashion</a>
           </span>
         </span>
@@ -228,11 +232,8 @@
           <a href="#films">Films</a>
           <span class="subnav" aria-label="Films categories">
             <a href="#films-personal">Personal</a>
-            <span>--</span>
             <a href="#films-music-video">Music Video</a>
-            <span>--</span>
             <a href="#films-commercials">Commercials</a>
-            <span>--</span>
             <a href="#films-shorts">Shorts</a>
           </span>
         </span>
