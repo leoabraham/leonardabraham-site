@@ -61,18 +61,21 @@
 
     .nav {
       position: relative;
-      display: flex;
-      gap: 5px;
-      align-items: center;
+      display: block;
       white-space: nowrap;
       font-size: 0.78em;
       line-height: 1;
       letter-spacing: 0.12em;
-      padding-bottom: 78px;
+      padding-bottom: 92px;
     }
 
-    .nav::before {
-      content: ">";
+    .nav-row {
+      display: flex;
+      gap: 5px;
+      align-items: center;
+    }
+
+    .nav-prompt {
       display: inline-block;
       margin-right: 2px;
     }
@@ -82,16 +85,13 @@
       display: inline-block;
     }
 
-    .nav-group {
-      position: relative;
-    }
-
     .subnav {
       position: absolute;
-      left: 0;
-      top: 1.8em;
+      left: 2.65ch;
+      top: 0.95em;
       display: grid;
       gap: 5px;
+      padding-top: 13px;
       white-space: nowrap;
       opacity: 0;
       pointer-events: none;
@@ -106,8 +106,14 @@
       margin-right: 6px;
     }
 
-    .nav-group:hover .subnav,
-    .nav-group:focus-within .subnav {
+    .nav:has(.photographs-trigger:hover) .photographs-subnav,
+    .nav:has(.photographs-trigger:focus-visible) .photographs-subnav,
+    .nav:has(.photographs-subnav:hover) .photographs-subnav,
+    .nav:has(.photographs-subnav:focus-within) .photographs-subnav,
+    .nav:has(.films-trigger:hover) .films-subnav,
+    .nav:has(.films-trigger:focus-visible) .films-subnav,
+    .nav:has(.films-subnav:hover) .films-subnav,
+    .nav:has(.films-subnav:focus-within) .films-subnav {
       opacity: 1;
       pointer-events: auto;
     }
@@ -186,12 +192,16 @@
       }
 
       .nav {
-        gap: 4px;
         font-size: 0.76em;
-        padding-bottom: 78px;
+        padding-bottom: 92px;
+      }
+
+      .nav-row {
+        gap: 4px;
       }
 
       .subnav {
+        left: 2.65ch;
         gap: 5px;
         font-size: 0.86em;
       }
@@ -220,25 +230,24 @@
     <header class="identity" aria-label="Leonard Abraham site navigation">
       <a class="name" href="/">Leonard Abraham</a>
       <nav class="nav">
-        <span class="nav-group">
-          <a href="#photographs">Photographs</a>
-          <span class="subnav" aria-label="Photographs categories">
-            <a href="#photographs-personal">Personal</a>
-            <a href="#photographs-fashion">Fashion</a>
-          </span>
-        </span>
-        <span>--</span>
-        <span class="nav-group">
-          <a href="#films">Films</a>
-          <span class="subnav" aria-label="Films categories">
-            <a href="#films-personal">Personal</a>
-            <a href="#films-music-video">Music Video</a>
-            <a href="#films-commercials">Commercials</a>
-            <a href="#films-shorts">Shorts</a>
-          </span>
-        </span>
-        <span>--</span>
-        <a href="#objects">Objects</a>
+        <div class="nav-row">
+          <span class="nav-prompt">&gt;</span>
+          <a class="photographs-trigger" href="#photographs">Photographs</a>
+          <span>--</span>
+          <a class="films-trigger" href="#films">Films</a>
+          <span>--</span>
+          <a href="#objects">Objects</a>
+        </div>
+        <div class="subnav photographs-subnav" aria-label="Photographs categories">
+          <a href="#photographs-personal">Personal</a>
+          <a href="#photographs-fashion">Fashion</a>
+        </div>
+        <div class="subnav films-subnav" aria-label="Films categories">
+          <a href="#films-personal">Personal</a>
+          <a href="#films-music-video">Music Video</a>
+          <a href="#films-commercials">Commercials</a>
+          <a href="#films-shorts">Shorts</a>
+        </div>
       </nav>
     </header>
 
