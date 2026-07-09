@@ -72,8 +72,9 @@ a:hover {
 }
 
 .work-page {
-  max-width: 1420px;
-  margin: 112px auto 0;
+  width: 100%;
+  max-width: none;
+  margin: 92px 0 0;
 }
 
 .back-link,
@@ -93,19 +94,17 @@ a:hover {
 }
 
 .work-head {
-  display: grid;
-  grid-template-columns: minmax(150px, 0.36fr) minmax(0, 1.64fr);
-  gap: 34px;
-  padding-top: 22px;
-  border-top: 1px solid var(--line);
+  display: block;
+  padding-top: 0;
+  border-top: 0;
   margin-bottom: 28px;
 }
 
 .work-title {
   margin: 0;
-  font-size: clamp(22px, 4vw, 56px);
-  line-height: 0.92;
-  letter-spacing: -0.07em;
+  font-size: clamp(11px, 1.15vw, 15px);
+  line-height: 1.05;
+  letter-spacing: 0.08em;
   font-weight: 400;
   text-transform: uppercase;
 }
@@ -238,7 +237,6 @@ a:hover {
     margin-top: 84px;
   }
 
-  .work-head,
   .project-head {
     grid-template-columns: 1fr;
     gap: 18px;
