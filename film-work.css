@@ -39,6 +39,8 @@ a:hover {
 }
 
 .identity {
+  position: relative;
+  z-index: 5;
   display: inline-grid;
   gap: 8px;
   font-size: clamp(11px, 1.15vw, 15px);
@@ -52,23 +54,66 @@ a:hover {
 }
 
 .nav {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 5px;
-  align-items: center;
+  position: relative;
+  display: block;
   font-size: 0.78em;
   line-height: 1;
   letter-spacing: 0.12em;
   white-space: nowrap;
 }
 
+.nav-row {
+  display: flex;
+  gap: 5px;
+  align-items: center;
+}
+
 .nav-prompt {
+  display: inline-block;
   margin-right: 2px;
 }
 
 .nav a,
 .nav span {
   display: inline-block;
+}
+
+.subnav {
+  position: absolute;
+  left: 2.65ch;
+  top: 0.7em;
+  z-index: 10;
+  display: grid;
+  gap: 5px;
+  min-width: 34ch;
+  padding: 20px 170px 34px 0;
+  white-space: nowrap;
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: auto;
+  font-size: 0.88em;
+  line-height: 1;
+  letter-spacing: 0.1em;
+  transition: none;
+}
+
+.subnav a::before {
+  content: ">";
+  display: inline-block;
+  margin-right: 6px;
+}
+
+.nav:has(.photographs-trigger:hover) .photographs-subnav,
+.nav:has(.photographs-trigger:focus-visible) .photographs-subnav,
+.nav:has(.photographs-subnav:hover) .photographs-subnav,
+.nav:has(.photographs-subnav:focus-within) .photographs-subnav,
+.nav:has(.films-trigger:hover) .films-subnav,
+.nav:has(.films-trigger:focus-visible) .films-subnav,
+.nav:has(.films-subnav:hover) .films-subnav,
+.nav:has(.films-subnav:focus-within) .films-subnav {
+  opacity: 1;
+  visibility: visible;
+  transition-delay: 0s;
 }
 
 .work-page {
@@ -253,6 +298,18 @@ a:hover {
 }
 
 @media (max-width: 620px) {
+  .nav-row {
+    gap: 4px;
+  }
+
+  .subnav {
+    left: 2.65ch;
+    gap: 5px;
+    min-width: 32ch;
+    padding: 20px 120px 34px 0;
+    font-size: 0.86em;
+  }
+
   .footer,
   .project-nav {
     flex-direction: column;
