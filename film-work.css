@@ -161,6 +161,11 @@ a:hover {
   align-items: start;
 }
 
+.single-video-grid {
+  grid-template-columns: minmax(0, 1fr);
+  max-width: 980px;
+}
+
 .project-card {
   display: block;
   min-width: 0;
