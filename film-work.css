@@ -180,6 +180,11 @@ a:hover {
   border: 1px solid var(--line);
 }
 
+.single-video-grid .video {
+  aspect-ratio: 4 / 3;
+  border: 0;
+}
+
 .video iframe {
   position: absolute;
   inset: 0;
