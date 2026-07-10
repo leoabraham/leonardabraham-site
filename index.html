@@ -141,25 +141,21 @@
     .media-slide.vertical {
       width: min(36vw, 500px);
       aspect-ratio: 1198 / 1714;
-      animation: showVertical 10s steps(1, end) infinite;
+      animation: showVertical 8s steps(1, end) infinite;
     }
 
     .media-slide.horizontal {
       width: min(62vw, 980px);
       aspect-ratio: 1584 / 1131;
-      animation: showHorizontal 10s steps(1, end) infinite;
-    }
-
-    .media-slide.added.third {
-      animation: showAdded3 10s steps(1, end) infinite;
+      animation: showHorizontal 8s steps(1, end) infinite;
     }
 
     .media-slide.added.fourth {
-      animation: showAdded4 10s steps(1, end) infinite;
+      animation: showAdded4 8s steps(1, end) infinite;
     }
 
     .media-slide.added.fifth {
-      animation: showAdded5 10s steps(1, end) infinite;
+      animation: showAdded5 8s steps(1, end) infinite;
     }
 
     .media-slide img {
@@ -190,31 +186,25 @@
     }
 
     @keyframes showVertical {
-      0%, 19.999% { opacity: 1; }
-      20%, 100% { opacity: 0; }
+      0%, 24.999% { opacity: 1; }
+      25%, 100% { opacity: 0; }
     }
 
     @keyframes showHorizontal {
-      0%, 19.999% { opacity: 0; }
-      20%, 39.999% { opacity: 1; }
-      40%, 100% { opacity: 0; }
-    }
-
-    @keyframes showAdded3 {
-      0%, 39.999% { opacity: 0; }
-      40%, 59.999% { opacity: 1; }
-      60%, 100% { opacity: 0; }
+      0%, 24.999% { opacity: 0; }
+      25%, 49.999% { opacity: 1; }
+      50%, 100% { opacity: 0; }
     }
 
     @keyframes showAdded4 {
-      0%, 59.999% { opacity: 0; }
-      60%, 79.999% { opacity: 1; }
-      80%, 100% { opacity: 0; }
+      0%, 49.999% { opacity: 0; }
+      50%, 74.999% { opacity: 1; }
+      75%, 100% { opacity: 0; }
     }
 
     @keyframes showAdded5 {
-      0%, 79.999% { opacity: 0; }
-      80%, 100% { opacity: 1; }
+      0%, 74.999% { opacity: 0; }
+      75%, 100% { opacity: 1; }
     }
 
     @media (max-width: 760px) {
@@ -307,9 +297,6 @@
       </div>
       <div class="media-slide horizontal">
         <img src="dossier-personage-no1-pg.jpg.jpg" alt="Dossier Personage page spread placeholder" />
-      </div>
-      <div class="media-slide added third">
-        <img src="homepage-rotation-03.jpg" alt="Homepage rotation image 03" />
       </div>
       <div class="media-slide added fourth">
         <img src="homepage-rotation-04.jpg" alt="Homepage rotation image 04" />
