@@ -141,13 +141,17 @@
     .media-slide.vertical {
       width: min(36vw, 500px);
       aspect-ratio: 1198 / 1714;
-      animation: showVertical 10s steps(1, end) infinite;
+      animation: showVertical 15s steps(1, end) infinite;
     }
 
     .media-slide.horizontal {
       width: min(62vw, 980px);
       aspect-ratio: 1584 / 1131;
-      animation: showHorizontal 10s steps(1, end) infinite;
+      animation: showHorizontal 15s steps(1, end) infinite;
+    }
+
+    .media-slide.added {
+      animation: showAdded 15s steps(1, end) infinite;
     }
 
     .media-slide img {
@@ -155,6 +159,14 @@
       height: 100%;
       display: block;
       object-fit: cover;
+    }
+
+    .media-slide.added img {
+      width: auto;
+      height: auto;
+      max-width: min(62vw, 980px);
+      max-height: 72vh;
+      object-fit: contain;
     }
 
     .contact {
@@ -170,13 +182,19 @@
     }
 
     @keyframes showVertical {
-      0%, 49.999% { opacity: 1; }
-      50%, 100% { opacity: 0; }
+      0%, 33.332% { opacity: 1; }
+      33.333%, 100% { opacity: 0; }
     }
 
     @keyframes showHorizontal {
-      0%, 49.999% { opacity: 0; }
-      50%, 100% { opacity: 1; }
+      0%, 33.332% { opacity: 0; }
+      33.333%, 66.665% { opacity: 1; }
+      66.666%, 100% { opacity: 0; }
+    }
+
+    @keyframes showAdded {
+      0%, 66.665% { opacity: 0; }
+      66.666%, 100% { opacity: 1; }
     }
 
     @media (max-width: 760px) {
@@ -224,6 +242,11 @@
         top: 52%;
       }
 
+      .media-slide.added img {
+        max-width: calc(100vw - 36px);
+        max-height: 70vh;
+      }
+
       .contact {
         left: 18px;
         bottom: 18px;
@@ -264,6 +287,9 @@
       </div>
       <div class="media-slide horizontal">
         <img src="dossier-personage-no1-pg.jpg.jpg" alt="Dossier Personage page spread placeholder" />
+      </div>
+      <div class="media-slide added">
+        <img src="homepage-rotation-03.jpg" alt="Homepage rotation image 03" />
       </div>
     </section>
 
