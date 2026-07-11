@@ -166,6 +166,12 @@ a:hover {
   max-width: 980px;
 }
 
+.centered-project-grid {
+  grid-template-columns: minmax(0, 1fr);
+  width: min(48vw, 680px);
+  margin: 0 auto;
+}
+
 .project-card {
   display: block;
   min-width: 0;
@@ -324,6 +330,10 @@ a:hover {
   .project-grid,
   .stills-grid {
     grid-template-columns: 1fr;
+  }
+
+  .centered-project-grid {
+    width: min(100%, 620px);
   }
 
   .project-name {
