@@ -187,6 +187,11 @@ a:hover {
   object-fit: cover;
 }
 
+.project-card:nth-child(2) .project-cover img {
+  transform: scale(1.18);
+  transform-origin: center;
+}
+
 .project-card:hover .project-cover img {
   opacity: 0.88;
 }
