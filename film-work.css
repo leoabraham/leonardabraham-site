@@ -176,6 +176,21 @@ a:hover { color: var(--muted); }
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 18px;
+  align-items: start;
+}
+.stills-grid img {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+}
+.stills-grid.single-still {
+  grid-template-columns: minmax(0, 720px);
+  justify-content: center;
+}
+.stills-grid.single-still img {
+  aspect-ratio: 1 / 1;
 }
 .still-placeholder {
   aspect-ratio: 16 / 9;
@@ -211,6 +226,7 @@ a:hover { color: var(--muted); }
   .work-page, .project-page { margin-top: 84px; }
   .project-head { grid-template-columns: 1fr; gap: 18px; }
   .project-grid, .stills-grid { grid-template-columns: 1fr; }
+  .stills-grid.single-still { grid-template-columns: minmax(0, 620px); }
   .centered-project-grid { width: min(100%, 620px); }
   .project-name { white-space: normal; }
   .project-player { width: min(100%, 900px); min-width: 0; }
