@@ -151,10 +151,15 @@ a:hover { color: var(--muted); }
 }
 .project-head {
   display: grid;
-  grid-template-columns: minmax(150px, 0.36fr) minmax(0, 1.64fr);
+  grid-template-columns: 1fr auto 1fr;
+  align-items: start;
   gap: 34px;
   width: min(100%, 1120px);
   margin: 0 auto 22px;
+}
+.project-head > div:nth-child(2) {
+  grid-column: 2;
+  text-align: center;
 }
 .project-name {
   margin: 0;
@@ -163,6 +168,7 @@ a:hover { color: var(--muted); }
   letter-spacing: -0.06em;
   font-weight: 400;
   text-transform: uppercase;
+  text-align: center;
   white-space: nowrap;
 }
 .project-player {
@@ -230,6 +236,7 @@ a:hover { color: var(--muted); }
   .page { padding: 18px; }
   .work-page, .project-page { margin-top: 84px; }
   .project-head { grid-template-columns: 1fr; gap: 18px; }
+  .project-head > div:nth-child(2) { grid-column: 1; }
   .project-grid, .stills-grid { grid-template-columns: 1fr; }
   .stills-grid.single-still { grid-template-columns: minmax(0, 620px); }
   .centered-project-grid { width: min(100%, 620px); }
