@@ -65,6 +65,9 @@ a:hover { color: var(--muted); }
   transition: none;
 }
 .subnav a::before { content: ">"; display: inline-block; margin-right: 6px; }
+.films-subnav a[href="commercials.html"] { order: 1; }
+.films-subnav a[href="music-videos.html"] { order: 2; }
+.films-subnav a[href="personal-films.html"] { order: 3; }
 .nav:has(.photographs-trigger:hover) .photographs-subnav,
 .nav:has(.photographs-trigger:focus-visible) .photographs-subnav,
 .nav:has(.photographs-subnav:hover) .photographs-subnav,
