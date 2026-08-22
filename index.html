@@ -125,6 +125,7 @@
     .media-stage {
       position: absolute;
       inset: 0;
+      z-index: 0;
       pointer-events: none;
     }
 
@@ -139,7 +140,7 @@
     }
 
     .media-slide.vertical {
-      width: min(36vw, 500px);
+      width: min(39vw, 540px);
       aspect-ratio: 1198 / 1714;
       animation: showVertical 27s steps(1, end) infinite;
     }
@@ -149,7 +150,7 @@
     }
 
     .media-slide.horizontal {
-      width: min(62vw, 980px);
+      width: min(66vw, 1060px);
       aspect-ratio: 1584 / 1131;
       animation: showHorizontal 27s steps(1, end) infinite;
     }
@@ -179,7 +180,7 @@
     }
 
     .media-slide.diptych.sixth {
-      width: min(62vw, 980px);
+      width: min(66vw, 1060px);
       display: grid;
       grid-template-columns: repeat(2, minmax(0, 1fr));
       gap: 14px;
@@ -197,8 +198,8 @@
     .media-slide.added img {
       width: auto;
       height: auto;
-      max-width: min(62vw, 980px);
-      max-height: 72vh;
+      max-width: min(66vw, 1060px);
+      max-height: 76vh;
       object-fit: contain;
     }
 
@@ -313,25 +314,25 @@
       }
 
       .media-slide.vertical {
-        width: calc(100vw - 36px);
-        max-width: 420px;
+        width: calc(100vw - 24px);
+        max-width: 450px;
         top: 52%;
       }
 
       .media-slide.horizontal {
-        width: calc(100vw - 36px);
-        max-width: 520px;
+        width: calc(100vw - 24px);
+        max-width: 560px;
         top: 52%;
       }
 
       .media-slide.added img {
-        max-width: calc(100vw - 36px);
-        max-height: 70vh;
+        max-width: calc(100vw - 24px);
+        max-height: 72vh;
       }
 
       .media-slide.diptych.sixth {
-        width: calc(100vw - 36px);
-        max-width: 620px;
+        width: calc(100vw - 24px);
+        max-width: 660px;
         gap: 8px;
         top: 52%;
       }
